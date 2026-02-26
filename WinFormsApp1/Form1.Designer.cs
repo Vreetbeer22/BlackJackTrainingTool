@@ -2,58 +2,65 @@
 {
     partial class Form1
     {
-        /// <summary>
-        ///  Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        ///  Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
-            {
                 components.Dispose();
-            }
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
-
-        /// <summary>
-        ///  Required method for Designer support - do not modify
-        ///  the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
-            SuspendLayout();
-            // 
-            // button1
-            // 
-            button1.Location = new Point(148, 118);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 0;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
-            // Form1
-            // 
+            btnDeal = new Button();
+            btnShuffle = new Button();
+            lblCard = new Label();
+            lblDeckCount = new Label();
+
+            //btnDeal
+            btnDeal.Location = new Point(50, 200);
+            btnDeal.Size = new Size(100, 34);
+            btnDeal.Text = "Deal new card";
+            btnDeal.Click += btnDeal_Click;
+
+            //btnShuffle
+            btnShuffle.Location = new Point(170, 200);
+            btnShuffle.Size = new Size(100, 34);
+            btnShuffle.Text = "Shuffle";
+            btnShuffle.Click += btnShuffle_Click;
+
+            //lblCard
+            lblCard.Location = new Point(50, 80);
+            lblCard.Size = new Size(120, 80);
+            lblCard.Font = new Font("Segoe UI", 28, FontStyle.Bold);
+            lblCard.BorderStyle = BorderStyle.FixedSingle;
+            lblCard.TextAlign = ContentAlignment.MiddleCenter;
+            lblCard.Text = "?";
+
+            //lblDeckCount
+            lblDeckCount.Location = new Point(50, 170);
+            lblDeckCount.AutoSize = true;
+            lblDeckCount.Font = new Font("Segoe UI", 10);
+            lblDeckCount.Text = "Cards left: 52";
+
+            //Form1
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(button1);
+            ClientSize = new Size(400, 300);
+            Controls.Add(btnDeal);
+            Controls.Add(btnShuffle);
+            Controls.Add(lblCard);
+            Controls.Add(lblDeckCount);
             Name = "Form1";
-            Text = "Form1";
+            Text = "BlackJack Trainer";
             ResumeLayout(false);
+            PerformLayout();
         }
 
-        #endregion
-
-        private Button button1;
+        private Button btnDeal;
+        private Button btnShuffle;
+        private Label lblCard;
+        private Label lblDeckCount;
     }
 }
