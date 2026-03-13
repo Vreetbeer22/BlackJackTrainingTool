@@ -21,7 +21,7 @@ namespace WinFormsApp1
         KING
 
     }
-    public enum Suit 
+    public enum Suit
     {
         HEARTS,
         DIAMONDS,
@@ -33,7 +33,7 @@ namespace WinFormsApp1
     internal class Card
     {
         Rank rank;
-        int value;
+        int cardValue;
         Suit suit;
         bool isFaceDown;
 
@@ -41,9 +41,19 @@ namespace WinFormsApp1
         {
             get
             {
-                if (rank >= Rank.TEN) return 10;
-                if (rank == Rank.ACE) return 11;
-                return (int)rank + 1;
+                if (rank >= Rank.TEN)
+                {
+                    cardValue = 10;
+                }
+                else if (rank == Rank.ACE) 
+                {
+                    cardValue = 11; 
+                }
+                else 
+                {
+                    cardValue = (int)rank + 1; 
+                }
+                return cardValue;
             }
         }
 

@@ -6,37 +6,55 @@ namespace WinFormsApp1
 {
     internal class Deck
     {
-        private List<Card> cards = new List<Card>();
-        private int currentIndex = 0;
+        private List<Card> cards;
 
-        private static string[] Ranks = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
-        private static string[] Suits = { "♠", "♥", "♦", "♣" };
+        public int CardsLeft => cards.Count;
 
         public Deck()
         {
-            foreach (string suit in Suits)
-                foreach (string rank in Ranks)
+            cards = new List<Card>();
+            foreach (Suit suit in Enum.GetValues(typeof(Suit)))
+            {
+                foreach (Rank rank in Enum.GetValues(typeof(Rank)))
+                {
                     cards.Add(new Card(rank, suit));
+                }
+            }
         }
+
         public void Shuffle()
         {
             Random rnd = new Random();
-            for (int i = cards.Count - 1; i >= 0; i--)
+            int n = cards.Count;
+            while (n > 1)
             {
-                int j = rnd.Next(i + 1);
-                Card temp = cards[i];
-                cards[i] = cards[j];
-                cards[j] = temp;
+                n--;
+                int k = rnd.Next(n + 1);
+                (cards[k], cards[n]) = (cards[n], cards[k]);
             }
-            currentIndex = 0;
         }
+
         public Card Deal()
         {
-            return cards[currentIndex++];
+            if (cards.Count == 0)
+            {
+                throw new InvalidOperationException("Deck is empty");
+            }
+            Card top = cards[0];
+            cards.RemoveAt(0);
+            return top;
         }
-        public int Remaining
+
+        public void Reset()
         {
-            get { return cards.Count -  currentIndex; }
+            cards.Clear();
+            foreach (Suit suit in Enum.GetValues(typeof(Suit)))
+            {
+                foreach (Rank rank in Enum.GetValues(typeof(Rank)))
+                {
+                    cards.Add(new Card(rank, suit));
+                }
+            }
         }
     }
 }
