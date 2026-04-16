@@ -33,6 +33,7 @@ namespace WinFormsApp1
             players.Clear();
             RefreshPlayerList();
             UpdateSetupButtons();
+            UpdateStateLabel();
         }
 
         private void EnterStartState()
@@ -47,6 +48,7 @@ namespace WinFormsApp1
             UpdateCardCount();
 
             labelStatus.Text = $"Spelers: {string.Join(", ", players.ConvertAll(p => p.Name))} | Klaar om te spelen!";
+            UpdateStateLabel();
         }
 
         private void btnAddPlayer_Click(object sender, EventArgs e)
@@ -141,6 +143,11 @@ namespace WinFormsApp1
         private void btnBackToSetup_Click(object sender, EventArgs e)
         {
             EnterSetupState();
+        }
+
+        private void UpdateStateLabel()
+        {
+            labelGameState.Text = $"  State: {currentState.ToString().ToUpper()}";
         }
     }
 }

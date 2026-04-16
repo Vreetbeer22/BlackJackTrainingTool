@@ -179,6 +179,19 @@
             btnBackToSetup.Click += btnBackToSetup_Click;
             panelGame.Controls.Add(btnBackToSetup);
 
+            // labelGameState (statusbalk onderaan)
+            labelGameState = new Label();
+            labelGameState.AutoSize = false;
+            labelGameState.Size = new Size(711, 24);
+            labelGameState.Location = new Point(0, 424);
+            labelGameState.Name = "labelGameState";
+            labelGameState.Text = "State: SETUP";
+            labelGameState.TextAlign = ContentAlignment.MiddleLeft;
+            labelGameState.Font = new Font("Segoe UI", 9, FontStyle.Regular);
+            labelGameState.BackColor = SystemColors.ControlDark;
+            labelGameState.ForeColor = Color.White;
+            Controls.Add(labelGameState); // voeg toe aan Form, niet aan een panel
+
             // ════════════════════════════════════════════════════════════
             // Form1
             // ════════════════════════════════════════════════════════════
@@ -210,5 +223,6 @@
         private Label labelCardsLeft;
         private Label labelStatus;
         private Button btnBackToSetup;
+        private Label labelGameState;
     }
 }
