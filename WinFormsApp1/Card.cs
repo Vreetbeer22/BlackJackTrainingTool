@@ -4,30 +4,72 @@ using System.Text;
 
 namespace WinFormsApp1
 {
+    public enum Rank
+    {
+        ACE,
+        TWO,
+        THREE,
+        FOUR,
+        FIVE,
+        SIX,
+        SEVEN,
+        EIGHT,
+        NINE,
+        TEN,
+        JACK,
+        QUEEN,
+        KING
+    }
+    public enum Suit
+    {
+        HEARTS,
+        DIAMONDS,
+        SPADES,
+        CLUBS
+    }
+
+
     internal class Card
     {
-        public string Rank { get; set; }
-        public string Suit { get; set; }
-
-        public Card(string rank, string suit) 
-        {
-            Rank = rank;
-            Suit = suit;
-        }
+        Rank rank;
+        int cardValue;
+        Suit suit;
+        bool isFaceDown;
 
         public int Value
         {
             get
             {
-                if (Rank == "A") return 11;
-                if (Rank == "K" || Rank == "Q" || Rank == "J") return 10;
-                return int.Parse(Rank);
+                if (rank >= Rank.TEN)
+                {
+                    cardValue = 10;
+                }
+                else if (rank == Rank.ACE) 
+                {
+                    cardValue = 11; 
+                }
+                else 
+                {
+                    cardValue = (int)rank + 1; 
+                }
+                return cardValue;
             }
         }
-        public string Display
+
+        public Card(Rank rank, Suit suit)
         {
-            get { return Rank + Suit; }
+            this.rank = rank;
+            this.suit = suit;
         }
 
+        public void Flip()
+        {
+            isFaceDown = !isFaceDown;
+        }
+
+        public override string ToString()
+        {
+            return rank.ToString() + " OF " + suit.ToString();
+        }
     }
 }
