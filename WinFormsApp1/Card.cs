@@ -19,7 +19,6 @@ namespace WinFormsApp1
         JACK,
         QUEEN,
         KING
-
     }
     public enum Suit
     {
